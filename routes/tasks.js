@@ -65,4 +65,37 @@ router.post('/task', [
     })
 })
 
+
+/**
+ * GET SPECIFIED TASK BY ID
+ */
+router.get('/tasks/(:id)', function(req,res){
+    let id = req.params.id;
+
+    connection.query(`SELECT * FROM tasks WHERE id = ${id}`, function(err,rows){
+        if(err){
+            return res.status(500).json({
+                status : false,
+                message : 'Internal Server Error'
+            })
+        }
+
+        //if tasks not found
+        if(rows.length <= 0){
+            return res.status(404).json({
+                status : false,
+                message : 'Data Task Not Found!'
+            })
+        }
+
+        //if tasks found
+        return res.status(200).json({
+            status : true,
+            message : 'Detail Data Task',
+            data : rows[0]
+        })
+    })
+})
+
+
 module.exports = router;
