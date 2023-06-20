@@ -97,5 +97,47 @@ router.get('/tasks/(:id)', function(req,res){
     })
 })
 
+/**
+ * UPDATE TASK
+ */
+router.patch('/tasks/(:id)', [
+    //validation
+    body('title').notEmpty(),
+    body('description').notEmpty(),
+    body('completed').notEmpty()
+], (req,res) => {
+    const errors = validationResult(req);
+
+    if(!errors.isEmpty()){
+        return res.status(422).json({
+            errors : errors.array()
+        });
+    }
+
+    //id task
+    let id = req.params.id;
+
+    //data task
+    let formData = {
+        title : req.body.title,
+        description : req.body.description,
+        completed : req.body.completed
+    }
+
+    //update query
+    connection.query(`UPDATE tasks SET ? WHERE id=${id}`, formData, function(err,rows){
+        if(err){
+            return res.status(500).json({
+                status : false,
+                message : 'Internal Server Error'
+            })
+        } else {
+            return res.status(200).json({
+                status : true,
+                message : 'Update Data Successfully!'
+            })
+        }
+    })
+})
 
 module.exports = router;
