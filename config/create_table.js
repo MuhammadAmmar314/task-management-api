@@ -12,7 +12,7 @@ con.connect(function(err) {
     console.log("Connected to MySQL");
 });
 
-let sql = "CREATE TABLE tasks (id INT, title VARCHAR(255), description VARCHAR(255), status BIT(1))";
+let sql = "CREATE TABLE tasks (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255) NOT NULL, description VARCHAR(255), completed TINYINT(1))";
 con.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table created");
