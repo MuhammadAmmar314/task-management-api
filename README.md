@@ -11,18 +11,30 @@ Please make sure that you have:
 - MySQL Installed and running locally
 
 ## HOW TO RUN THE APPLICATION
-- Clone the project from github
-	git clone MuhammadAmmar314/task-management-api.git
-- Open the project that have been cloned
+- Clone the project from github:
+    ```
+    git clone MuhammadAmmar314/task-management-api.git
+    ```
+- Open the project that have been cloned:
+    ```
 	cd task-management-api
-- Install NPM dependencies
+    ```
+- Install NPM dependencies:
+    ```
 	npm install
-- Write this to create the database
+    ```
+- Write this to create the database:
+    ```
 	node config/create_database.js
-- Write this to create the table
+    ```
+- Write this to create the table:
+    ```
 	node config/create_table.js
-- Write this to run the application
+    ```
+- Write this to run the application:
+    ```
 	npm start
+    ```
 
 ## IMPLEMENTED ENDPOINTS:
 
