@@ -8,7 +8,7 @@
 ## BEFORE USING
 Please make sure that you have:
 - Node.js installed (https://nodejs.org/)
--MySQL Installed and running locally
+- MySQL Installed and running locally
 
 ## HOW TO RUN THE APPLICATION
 - Clone the project from github
